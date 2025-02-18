@@ -5,10 +5,10 @@ import Shop from './Pages/Shop/Shop'
 import Header from './Components/Header/Header'
 import SignInAndSignUp from './Pages/SignInAndSignUp/SignInAndSignUp'
 
-function Routing({ currentUser}) {
+function Routing() {
   return (
     <>
-      <Header currentUser={currentUser} />
+      <Header />
       <Routes>
         <Route exact path='/' Component={Home} />
         <Route exact path='/shop' Component={Shop} />
