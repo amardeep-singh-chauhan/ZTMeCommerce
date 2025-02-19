@@ -9,8 +9,8 @@ function PreviewCollection({ title, items }) {
             <div className="preview">
                 {items
                     .slice(0, 4)
-                    .map(({id, ...itemProps}) => (
-                        <ItemCollection key={id} {...itemProps}/>
+                    .map((item) => (
+                        <ItemCollection key={item.id} item={item} />
                     ))}
             </div>
         </div>
