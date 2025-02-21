@@ -1,12 +1,13 @@
 import React from 'react'
 import './SignIn.scss'
-import { signInwithGooglePopup } from '../../Utils/Firebase/Firebase.utils'
+import { createUserDocumentFromAuth, signInwithGooglePopup } from '../../Utils/Firebase/Firebase.utils'
 
 function SignIn() {
 
   const logGoogleUser = async () => {
-    const response = await signInwithGooglePopup();
-    console.log(response);
+    const {user} = await signInwithGooglePopup();
+    const userDocRef = await createUserDocumentFromAuth(user);
+    
   }
 
   return (
