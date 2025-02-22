@@ -4,6 +4,8 @@ import { Link, Outlet } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../Assets/crown.svg'
 import { UserContext } from '../../Contexts/UserContext'
 import { signOutUser } from '../../Utils/Firebase/Firebase.utils'
+import CartIcon from '../../Components/CartIcon/CartIcon'
+import CartDropdown from '../../Components/CartDropdown/CartDropdown'
 
 function Navigation() {
   const { currentUser } = useContext(UserContext);
@@ -34,7 +36,9 @@ function Navigation() {
               </Link>
             )
           }
+          <CartIcon />
         </div>
+        <CartDropdown />
       </div>
       <Outlet />
     </>
