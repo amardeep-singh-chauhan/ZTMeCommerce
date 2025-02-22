@@ -6,9 +6,11 @@ import { UserContext } from '../../Contexts/UserContext'
 import { signOutUser } from '../../Utils/Firebase/Firebase.utils'
 import CartIcon from '../../Components/CartIcon/CartIcon'
 import CartDropdown from '../../Components/CartDropdown/CartDropdown'
+import { CartContext } from '../../Contexts/CartContext'
 
 function Navigation() {
   const { currentUser } = useContext(UserContext);
+  const {isCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {
     await signOutUser()
@@ -38,7 +40,7 @@ function Navigation() {
           }
           <CartIcon />
         </div>
-        <CartDropdown />
+        {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
     </>
