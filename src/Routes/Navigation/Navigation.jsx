@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Navigation.scss'
 import { Link, Outlet } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../Assets/crown.svg'
+import { UserContext } from '../../Contexts/UserContext'
+import { signOutUser } from '../../Utils/Firebase/Firebase.utils'
 
 function Navigation() {
+  const { currentUser } = useContext(UserContext);
+
+  const signOutHandler = async () => {
+    await signOutUser()
+  }
+
   return (
     <>
       <div className='navigation'>
@@ -14,9 +22,18 @@ function Navigation() {
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
-          <Link className="nav-link" to="/auth">
-            SIGNIN
-          </Link>
+          {
+            currentUser ? (
+              <span className="nav-link" onClick={signOutHandler}>
+                {' '}
+                SIGN OUT{' '}
+              </span>
+            ) : (
+              <Link className="nav-link" to="/auth">
+                SIGNIN
+              </Link>
+            )
+          }
         </div>
       </div>
       <Outlet />
