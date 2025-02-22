@@ -5,7 +5,7 @@ export const ProductContext = createContext({
     products: []
 })
 
-export const ProductProvider = ({children}) => {
+export const ProductProvider = ({ children }) => {
     const products = PRODUCTS
     const value = { products }
 
