@@ -1,12 +1,12 @@
-import { createContext } from "react";
-import PRODUCTS from '../ShopData.json'
+import { createContext, useEffect } from "react";
+import { addCollectionAndDocuments } from "../Utils/Firebase/Firebase.utils.js";
 
 export const ProductContext = createContext({
     products: []
 })
 
 export const ProductProvider = ({ children }) => {
-    const products = PRODUCTS
+    const products = []
     const value = { products }
 
     return (
