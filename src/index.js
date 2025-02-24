@@ -4,19 +4,19 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './Contexts/UserContext';
-import { ProductProvider } from './Contexts/ProductContext';
 import { CartProvider } from './Contexts/CartContext';
+import { CategoriesProvider } from './Contexts/CategoriesContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <Provider>
   <BrowserRouter>
     <UserProvider>
-      <ProductProvider>
+      <CategoriesProvider>
         <CartProvider>
           <App />
         </CartProvider>
-      </ProductProvider>
+      </CategoriesProvider>
     </UserProvider>
   </BrowserRouter>
   // </Provider>
