@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import './Navigation.scss'
-import { Link, Outlet } from 'react-router-dom'
+import { NavigationContainer, LogoContainer, NavLinks, NavLink } from './NavigationStyles';
+import { Outlet } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../Assets/crown.svg'
 import { UserContext } from '../../Contexts/UserContext'
 import { signOutUser } from '../../Utils/Firebase/Firebase.utils'
@@ -18,30 +18,30 @@ function Navigation() {
 
   return (
     <>
-      <div className='navigation'>
-        <Link className='logo-container' to="/">
+      <NavigationContainer>
+        <LogoContainer to="/">
           <Logo className='logo' />
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to="/shop">
             SHOP
-          </Link>
+          </NavLink>
           {
             currentUser ? (
-              <span className="nav-link" onClick={signOutHandler}>
+              <NavLink as='span' onClick={signOutHandler}>
                 {' '}
                 SIGN OUT{' '}
-              </span>
+              </NavLink>
             ) : (
-              <Link className="nav-link" to="/auth">
+              <NavLink to="/auth">
                 SIGNIN
-              </Link>
+              </NavLink>
             )
           }
           <CartIcon />
-        </div>
+        </NavLinks >
         {isCartOpen && <CartDropdown />}
-      </div>
+      </NavigationContainer>
       <Outlet />
     </>
   )
