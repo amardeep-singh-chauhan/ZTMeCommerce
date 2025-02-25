@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import './SignUpForm.scss'
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../Utils/Firebase/Firebase.utils';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
+import { SignupContainer, SignupTitle } from './SignUpFormStyles';
 
 const defaultFormFields = {
   displayName: '',
@@ -47,8 +47,8 @@ function SignUpForm() {
   }
 
   return (
-    <div className='sign-up-container'>
-      <h2>Don't have an account?</h2>
+    <SignupContainer>
+      <SignupTitle>Don't have an account?</SignupTitle>
       <span>Sign Up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput label='Display Name' name='displayName' value={displayName} type='text' onChange={handleChange} required />
@@ -57,7 +57,7 @@ function SignUpForm() {
         <FormInput label='Confirm Password' name='confirmPassword' value={confirmPassword} type='password' onChange={handleChange} required />
         <Button type='submit'>Sign Up</Button>
       </form>
-    </div>
+    </SignupContainer>
   )
 }
 
