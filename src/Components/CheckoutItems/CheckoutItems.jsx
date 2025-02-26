@@ -3,7 +3,6 @@ import { CartContext } from '../../Contexts/CartContext';
 import { CheckoutItemContainer, CheckoutItemImage, CheckoutItemImageContainer, CheckoutItemNameAndPrice, CheckoutItemQuantity, CheckoutItemQuantityArrow, CheckoutItemQuantityValue, CheckoutItemRemoveButton } from './CheckoutItemsStyles';
 
 function CheckoutItems({ cartItem }) {
-    console.log(cartItem, "Check");
     const { name, imageUrl, price, quantity } = cartItem;
     const { updateCartItemQuantity, removeCartItem } = useContext(CartContext);
 
