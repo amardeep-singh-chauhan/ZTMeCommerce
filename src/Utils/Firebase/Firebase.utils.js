@@ -71,7 +71,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
                 ...additionalInformation
             })
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 

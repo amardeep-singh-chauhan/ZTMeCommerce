@@ -37,7 +37,7 @@ function SignInForm() {
             if (error.code === 'auth/invalid-credential') {
                 alert('Invalid credentials')
             } else {
-                console.log(error)
+                console.error(error)
             }
         }
     }
