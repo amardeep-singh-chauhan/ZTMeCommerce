@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { signInUserWithEmailAndPassword, signInwithGooglePopup } from '../../Utils/Firebase/Firebase.utils';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';

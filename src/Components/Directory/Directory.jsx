@@ -1,4 +1,3 @@
-import React from 'react'
 import DirectoryItem from '../DirectoryItem/DirectoryItem'
 import { DirectoryContainer } from './DirectoryStyles'
 

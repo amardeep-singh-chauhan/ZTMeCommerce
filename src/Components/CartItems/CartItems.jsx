@@ -1,4 +1,3 @@
-import React from 'react'
 import { CartItemDetails, CartItemImage, CartItemName, CartItemPrice, CartItemsContainer } from './CartItemsStyles';
 
 function CartItems({ cartItem }) {

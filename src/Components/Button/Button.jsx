@@ -1,4 +1,3 @@
-import React from 'react'
 import { BaseButton, GoogleSignInButton, InvertedButton } from './ButtonStyles'
 
 export const BUTTON_TYPE_CLASSES = {

@@ -1,4 +1,3 @@
-import React from 'react'
 import { BackgroundImage, Body, DirectoryItemContainer } from './DirectoryItemStyles';
 import { useNavigate } from 'react-router-dom';
 
