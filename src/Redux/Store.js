@@ -4,6 +4,7 @@ import logger from "redux-logger";
 import storage from 'redux-persist/lib/storage'
 import { persistReducer, persistStore } from "redux-persist";
 import { encryptTransform } from "redux-persist-transform-encrypt";
+import { thunk } from "redux-thunk";
 
 // Encryption on persistenet storage
 const encryptor = encryptTransform({
@@ -17,12 +18,12 @@ const persistConfig = {
     key: 'root',
     storage,
     transforms: [encryptor],
-    blacklist: ['user']
+    whitelist: ['cart']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const middleWares = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean)
+const middleWares = [process.env.NODE_ENV !== 'production' && logger, thunk].filter(Boolean)
 
 const composeEnhancers = (process.env.NODE_ENV !== 'production' && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
