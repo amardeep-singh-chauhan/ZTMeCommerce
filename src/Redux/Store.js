@@ -1,23 +1,33 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import { rootReducer } from "./RootReducer";
 import logger from "redux-logger";
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, persistStore } from "redux-persist";
+import { encryptTransform } from "redux-persist-transform-encrypt";
 
-const middleWares = [logger]
+// Encryption on persistenet storage
+const encryptor = encryptTransform({
+    secretKey: "amardeepsingh1105@gmail.com", // Change this to a secure key
+    onError: function (error) {
+        console.error("Encryption Error:", error);
+    }
+});
 
-// const loggerMiddleware = (state) => (next) => (action) => {
-//     if(!action.type) {
-//         next(action)
-//     }
+const persistConfig = {
+    key: 'root',
+    storage,
+    transforms: [encryptor],
+    blacklist: ['user']
+}
 
-//     console.log('type:', action.type)
-//     console.log('payload:', action.payload)
-//     console.log('cuurentState:', state.getState())
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-//     next(action)
+const middleWares = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean)
 
-//     console.log('next State:', state.getState())
-// };
+const composeEnhancers = (process.env.NODE_ENV !== 'production' && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
-const composedEnhancers = compose(applyMiddleware(...middleWares));
+const composedEnhancers = composeEnhancers(applyMiddleware(...middleWares));
 
-export const store = createStore(rootReducer, undefined, composedEnhancers);
+export const store = createStore(persistedReducer, undefined, composedEnhancers);
+
+export const persistor = persistStore(store);
