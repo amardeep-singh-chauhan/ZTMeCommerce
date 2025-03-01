@@ -7,7 +7,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 
 // Encryption on persistenet storage
 const encryptor = encryptTransform({
-    secretKey: "amardeepsingh1105@gmail.com", // Change this to a secure key
+    secretKey: "amardeepsingh1105@gmail.com",
     onError: function (error) {
         console.error("Encryption Error:", error);
     }
