@@ -11,6 +11,8 @@ function Category() {
     // const { categoriesMap } = useContext(CategoriesContext)
     const [products, setProducts] = useState(categoriesMap[category])
 
+    console.log(products,"products")
+
     useEffect(() => {
         setProducts(categoriesMap[category])
     }, [category, categoriesMap])
@@ -19,7 +21,7 @@ function Category() {
         <>
             <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
             <CategoryContainer>
-                {products && products.map(product => <ProductCard key={product.id} product={product} />)}
+                {products && products.items.map(product => <ProductCard key={product.id} product={product} />)}
             </CategoryContainer>
         </>
     )
