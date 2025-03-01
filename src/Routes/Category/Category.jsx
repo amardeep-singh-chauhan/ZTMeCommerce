@@ -21,7 +21,7 @@ function Category() {
         <>
             <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
             <CategoryContainer>
-                {products && products.items.map(product => <ProductCard key={product.id} product={product} />)}
+                {products && products.map(product => <ProductCard key={product.id} product={product} />)}
             </CategoryContainer>
         </>
     )
