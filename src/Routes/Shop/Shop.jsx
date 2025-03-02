@@ -3,13 +3,15 @@ import { Route, Routes } from 'react-router-dom'
 import CategoriesPreview from '../CategoriesPreview/CategoriesPreview'
 import Category from '../Category/Category'
 import { useDispatch } from 'react-redux';
-import { fetchCategoriesAsync } from '../../Redux/Categories/CategoryActions';
+import { fetchCategoriesStart } from '../../Redux/Categories/CategoryActions';
 
 function Shop() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategoriesAsync());
+    // dispatch(fetchCategoriesAsync()); // for Thunk
+
+    dispatch(fetchCategoriesStart()); // for Saga
   }, [dispatch])
 
   return (
