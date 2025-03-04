@@ -1,21 +1,22 @@
 import { NavigationContainer, LogoContainer, NavLinks, NavLink } from './NavigationStyles';
 import { Outlet } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../Assets/crown.svg'
-import { signOutUser } from '../../Utils/Firebase/Firebase.utils'
 import CartIcon from '../../Components/CartIcon/CartIcon'
 import CartDropdown from '../../Components/CartDropdown/CartDropdown'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser } from '../../Redux/User/UserSelector';
 import { selectIsCartOpen } from '../../Redux/Cart/CartSelector';
+import { signOutStart } from '../../Redux/User/UserActions';
 
 function Navigation() {
+  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
   // const { currentUser } = useContext(UserContext);
   // const { isCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {
-    await signOutUser()
+    dispatch(signOutStart());
   }
 
   return (

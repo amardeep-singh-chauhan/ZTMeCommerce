@@ -54,7 +54,7 @@ function SignUpForm() {
       <form onSubmit={handleSubmit}>
         <FormInput label='Display Name' name='displayName' value={displayName} type='text' onChange={handleChange} required />
         <FormInput label='Email' name='email' value={email} type='email' onChange={handleChange} required />
-        <FormInput label='Password' name='password' value={password} type='password' onChange={handleChange} required />
+        <FormInput label='Password' name='password' value={password} type='password' autoComplete='new-password' onChange={handleChange} required />
         <FormInput label='Confirm Password' name='confirmPassword' value={confirmPassword} type='password' onChange={handleChange} required />
         <Button type='submit'>Sign Up</Button>
       </form>

@@ -50,7 +50,7 @@ function SignInForm() {
             <span>Sign In with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput label='Email' name='email' value={email} type='email' onChange={handleChange} required />
-                <FormInput label='Password' name='password' value={password} type='password' onChange={handleChange} required />
+                <FormInput label='Password' name='password' value={password} type='password' autoComplete='new-password' onChange={handleChange} required />
                 <SigninButtonContainer>
                     <Button type='submit'>Sign In</Button>
                     <Button type='button' buttonType='google' onClick={signInWithGoogle}>Google Sign In</Button>
