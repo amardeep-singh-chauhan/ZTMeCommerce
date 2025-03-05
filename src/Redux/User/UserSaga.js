@@ -4,10 +4,8 @@ import { all, call, put, takeLatest } from "redux-saga/effects"
 import { signInFailed, signInSuccess, signOutFailed, signOutSuccess, signUpUserFailed, signUpUserSuccess } from "./UserActions"
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
-    console.log(userAuth, additionalDetails);
     try {
         const userSnapshot = yield call(createUserDocumentFromAuth, userAuth, additionalDetails);
-        console.log(userSnapshot, 'snapshot')
         yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
     } catch (error) {
         yield put(signInFailed(error));
